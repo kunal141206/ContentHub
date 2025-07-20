@@ -71,8 +71,8 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ✅ Force IPv4 binding to avoid ENOTSUP
-  httpServer.listen(port, "127.0.0.1", () => {
-    log(`🚀 Server running at http://127.0.0.1:${port}`);
-  });
+  httpServer.listen(port, () => {
+  log(`🚀 Server running at http://localhost:${port}`);
+});
+
 })();
