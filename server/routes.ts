@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { insertUserPreferencesSchema, insertFavoriteSchema } from "@shared/schema";
 
-const NewsAPI_KEY = process.env.NEWS_API_KEY || process.env.NEWSAPI_KEY || "demo_key";
+const NewsAPI_KEY = process.env.NEWS_API_KEY || process.env.NEWSAPI_KEY ;
 const TMDB_API_KEY = process.env.TMDB_API_KEY || process.env.TMDB_KEY || "demo_key";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -92,7 +92,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { category = "general", country = "us", pageSize = "20", page = "1" } = req.query;
       
-      const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${pageSize}&page=${page}&apiKey=${NewsAPI_KEY}`;
+      const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${pageSize}&page=${page}&apiKey=${'bf04cca9fd35402bb07bf1c45ab7d72d'}`;
       
       const response = await fetch(url);
       if (!response.ok) {
@@ -194,7 +194,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Search news if type is not specified or is "news"
       if (!type || type === "news") {
         try {
-          const newsUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&pageSize=10&apiKey=${NewsAPI_KEY}`;
+          const newsUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&pageSize=10&apiKey=${'bf04cca9fd35402bb07bf1c45ab7d72d'}`;
           const newsResponse = await fetch(newsUrl);
           
           if (newsResponse.ok) {
@@ -278,7 +278,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         for (const category of newsCategories) {
           try {
-            const newsUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=5&apiKey=${NewsAPI_KEY}`;
+            const newsUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=5&apiKey=${'bf04cca9fd35402bb07bf1c45ab7d72d'}`;
             const newsResponse = await fetch(newsUrl);
             
             if (newsResponse.ok) {
